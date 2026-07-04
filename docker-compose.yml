@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: london_station_elt_postgres_container
+    restart: always 
+    environment: # .env data 
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}  
+    ports: 
+      - "5433:5432"
+    volumes:  # 로컬 폴더에 바로 저장
+      - ./postgres_data:/var/lib/postgresql/data 
+
+# 도커가 로컬 컴퓨터의 하드디스크 공간에 격리해서 만들고, os 권한 에러 방지, 안정적임 
+# named volume 방식 
+# docker volume ls 로 확인 가능
+volumes:
+  postgres_data: 
+
+# docker ps - 띄워진 컨테이너 확인 
+# docker logs london_station_elt_postgres_container - 실시간 로그 
