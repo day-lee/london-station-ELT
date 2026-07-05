@@ -15,12 +15,12 @@ def get_db_engine():
 
 def ingest_multi_header_xlsx(file_path, data_year):
     print(f"1. Load multi header xlsl file: {file_path}")
-    # skip metadata on the first 7 rows 
-    df = pd.read_excel(file_path, skiprows=[0, 1, 2, 3, 4, 5, 6], header=None) 
+    # skip metadata on the first 7 rows, last 1 row 
+    df = pd.read_excel(file_path, skiprows=[0, 1, 2, 3, 4, 5, 6], skipfooter=1, header=None) 
 
     print("2. Build unique column names")
     reconstructed_headers= [
-        "transport_mode", # Mode (LU/LO/DLR/TfL)
+        "mode", # Mode (LU/LO/DLR/TfL)
         "mnlc",
         "masc",
         "station_name",
