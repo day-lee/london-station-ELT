@@ -51,12 +51,12 @@ def ingest_multi_header_xlsx(file_path, data_year):
 
     try: 
         df.to_sql(
-            name='tfl_station_annual_traffic',
+            name='tfl_station_annual_traffic_raw',
             con=engine,
             if_exists='append', # NOT replace, keep adding new data 
             index=False 
         )
-        print(f"Total {len(df)} data loaded into tfl_station_annual_traffic table")
+        print(f"Total {len(df)} data loaded into tfl_station_annual_traffic_raw table")
         print(f"Created columns list: {list(df.columns)}")
 
     except Exception as e:
