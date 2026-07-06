@@ -1,4 +1,4 @@
-"""
+
 # 🚇 London Station ELT Project
 `E(Extract) -> L(Load) -> T(Transform)`
 
@@ -82,4 +82,4 @@ python src/load.py 2025
 - **Database**: PostgreSQL
 - **Infrastructure**: Docker, Docker Compose
 - **Tools**: Git
-"""
+
